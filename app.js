@@ -7,11 +7,7 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors({
-  origin: 'https://sem-a.github.io/inivite90e/', // Укажите разрешённый источник
-  methods: ['GET', 'POST'], // Разрешите необходимые методы
-  allowedHeaders: ['Content-Type'] // Разрешите заголовки по необходимости
-}));
+app.use(cors());
 
 app.use(logger("dev"));
 
