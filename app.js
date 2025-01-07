@@ -7,13 +7,18 @@ require("dotenv").config();
 
 const app = express();
 
+app.use(cors({
+  origin: 'https://sem-a.github.io/inivite90e/', // Укажите разрешённый источник
+  methods: ['GET', 'POST'], // Разрешите необходимые методы
+  allowedHeaders: ['Content-Type'] // Разрешите заголовки по необходимости
+}));
+
 app.use(logger("dev"));
-app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/api', require('./routes/index'));
+app.use("/api", require("./routes/index"));
 
 module.exports = app;
