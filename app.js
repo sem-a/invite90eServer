@@ -7,11 +7,16 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors({
-  origin: 'https://sem-a.github.io/inivite90e/', // Укажите разрешённый источник
-  methods: ['GET', 'POST'], // Разрешите необходимые методы
-  allowedHeaders: ['Content-Type'] // Разрешите заголовки по необходимости
-}));
+app.use(cors());
+
+app.use(express.static('public'));
+// Отправляем файл index.html при запросе к /
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+app.get('/results', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'results.html'));
+});
 
 app.use(logger("dev"));
 
