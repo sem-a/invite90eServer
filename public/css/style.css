@@ -310,3 +310,13 @@ button.btn {
     height: 844px;
   }
 }
+
+.guests-list div {
+  margin-left: 21px;
+  font-size: 20px;
+}
+
+.count p {
+  font-size: 24px;
+  font-weight: 700;
+}
