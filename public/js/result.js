@@ -20,7 +20,7 @@ function fetchGuestList() {
 
         console.log(guest);
 
-        listItem.textContent = guest.name; // Устанавливаем текст элемента как имя гостя
+        listItem.textContent = `${guest.name}(${guest.count})`; // Устанавливаем текст элемента как имя гостя
 
         guestListContainer.appendChild(listItem); // Добавляем элемент в список гостей
       });
