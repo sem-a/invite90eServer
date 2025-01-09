@@ -10,6 +10,7 @@ function fetchGuestList() {
     })
     .then((data) => {
       const guestListContainer = document.querySelector(".guest-list");
+      const countContainer = document.querySelector(".count_num");
 
       // Очищаем контейнер перед добавлением новых элементов (если нужно)
       guestListContainer.innerHTML = "";
@@ -26,6 +27,9 @@ function fetchGuestList() {
         
         guestListContainer.appendChild(listItem); // Добавляем элемент в список гостей
       });
+
+      countContainer.innerHTML = count;
+      
     })
     .catch((error) => {
       console.error("Ошибка при получении списка гостей:", error);
