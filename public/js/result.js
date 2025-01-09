@@ -23,7 +23,7 @@ function fetchGuestList() {
 
         listItem.textContent = `${guest.name}(${guest.count})`; // Устанавливаем текст элемента как имя гостя
 
-        count += Number(quest.count)
+        count += Number(guest.count)
         
         guestListContainer.appendChild(listItem); // Добавляем элемент в список гостей
       });
