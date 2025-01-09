@@ -14,7 +14,7 @@ document.querySelector(".btn").addEventListener("click", function () {
   const valueArray = newNameValue.split("+");
 
   // Отправляем POST-запрос на /api/add
-  fetch("http://sem-a-invite90eserver-f53e.twc1.net/api/add", {
+  fetch("https://sem-a-invite90eserver-f53e.twc1.net/api/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
