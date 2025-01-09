@@ -14,14 +14,16 @@ function fetchGuestList() {
       // Очищаем контейнер перед добавлением новых элементов (если нужно)
       guestListContainer.innerHTML = "";
 
+      let count = data.length;
+      
       data.forEach((guest) => {
         // Предполагается, что data - это массив объектов гостей
         const listItem = document.createElement("div"); // Создаем новый элемент div для каждого гостя
 
-        console.log(guest);
-
         listItem.textContent = `${guest.name}(${guest.count})`; // Устанавливаем текст элемента как имя гостя
 
+        count += Number(quest.count)
+        
         guestListContainer.appendChild(listItem); // Добавляем элемент в список гостей
       });
     })
