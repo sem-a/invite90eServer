@@ -311,11 +311,13 @@ button.btn {
   }
 }
 
-.guests-list div {
+.guest-list div{
   margin-left: 21px;
   font-size: 20px;
 }
-
+.count {
+  margin-left: 21px;
+}
 .count p {
   font-size: 24px;
   font-weight: 700;
