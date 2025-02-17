@@ -1,3 +1,14 @@
+window.addEventListener("load", function () {
+  const text = this.document.getElementById("title");
+  const kolp = document.getElementById("kolp");
+  setTimeout(function () {
+    kolp.classList.add("visible"); // Добавляем класс для плавного появления
+  }, 2000); // Задержка в 1000 миллисекунд (1 секунда)
+  setTimeout(function () {
+    text.classList.add("visible"); // Добавляем класс для плавного появления
+  }, 1000); // Задержка в 1000 миллисекунд (1 секунда)
+});
+
 document.querySelector(".btn").addEventListener("click", function () {
   // Получаем значение из поля ввода
   const nameInput = document.getElementById("name");
@@ -28,6 +39,7 @@ document.querySelector(".btn").addEventListener("click", function () {
       // например очистка поля или отображение сообщения об успехе.
       nameInput.value = ""; // Очищаем поле после успешной отправки.
       alert("Форма отправлена!");
+      window.location.href = "/send.html";
     })
     .catch((error) => {
       console.error("Ошибка:", error);

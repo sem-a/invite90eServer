@@ -16,20 +16,19 @@ function fetchGuestList() {
       guestListContainer.innerHTML = "";
 
       let count = data.length;
-      
+
       data.forEach((guest) => {
         // Предполагается, что data - это массив объектов гостей
         const listItem = document.createElement("div"); // Создаем новый элемент div для каждого гостя
 
         listItem.textContent = `${guest.name}(${guest.count})`; // Устанавливаем текст элемента как имя гостя
 
-        count += Number(guest.count)
-        
+        count += Number(guest.count);
+
         guestListContainer.appendChild(listItem); // Добавляем элемент в список гостей
       });
 
       countContainer.innerHTML = count;
-      
     })
     .catch((error) => {
       console.error("Ошибка при получении списка гостей:", error);
