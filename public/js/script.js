@@ -9,40 +9,38 @@ window.addEventListener("load", function () {
   }, 1000); // Задержка в 1000 миллисекунд (1 секунда)
 });
 
-document.querySelector(".btn").addEventListener("click", function () {
-  // Получаем значение из поля ввода
-  const nameInput = document.getElementById("name");
-  const nameValue = nameInput.value;
+document.getElementById("btn").addEventListener("click", function (e) {
+  e.preventDefault();
 
-  const newNameValue = nameValue.replace(/\s+/g, "");
+  const name = document.getElementById("name").value;
 
-  // Проверяем, что поле не пустое
-  if (newNameValue.trim() === "") {
+  // Проверяем, если поле не пустое
+  if (!name) {
     alert("Пожалуйста, введите имя.");
     return;
   }
 
-  const valueArray = newNameValue.split("+");
-
-  // Отправляем POST-запрос на /api/add
-  fetch("https://sem-a-invite90eserver-f53e.twc1.net/api/add", {
+  console.log(name);
+  // Отправка POST-запроса
+  fetch("/api/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name: valueArray[0], count: valueArray[1] }),
+    body: JSON.stringify({ name: name }),
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Ошибка сети");
+      }
+      return response.json(); // или response.text(), если ожидается текст
+    })
     .then((data) => {
       console.log("Успех:", data);
-      // Здесь вы можете добавить код для обработки успешного ответа от сервера,
-      // например очистка поля или отображение сообщения об успехе.
-      nameInput.value = ""; // Очищаем поле после успешной отправки.
-      alert("Форма отправлена!");
-      window.location.href = "/send.html";
+      window.location.href = '/send';
     })
     .catch((error) => {
       console.error("Ошибка:", error);
-      alert("Произошла ошибка при отправке данных. Попробуйте еще раз.");
+      alert("Произошла ошибка при отправке данных");
     });
 });

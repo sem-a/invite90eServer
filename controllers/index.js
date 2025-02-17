@@ -3,11 +3,11 @@ const { prisma } = require("../prisma/prisma-client");
 /**
  * @route /api/add
  * @method POST
- * @desc получить
+ * @desc добавление гостя
  * @access Public
  */
 const add = async (req, res) => {
-  const { name, count } = req.body;
+  const { name } = req.body;
 
   if (!name) {
     return res
@@ -19,35 +19,32 @@ const add = async (req, res) => {
     const guest = await prisma.guest.create({
       data: {
         name,
-        count,
       },
     });
+
+    console.log(guest);
 
     return res.status(200).json(guest);
   } catch (err) {
     console.log(err);
-    return res
-      .status(500)
-      .json({ message: "Возникла непредвиденная ошибка на сервере!" });
+    return res.status(500).json({ message: err.message });
   }
 };
 
 /**
  * @route /api/get
  * @method GET
- * @desc создать предложение
+ * @desc получить всех гостей
  * @access Public
  */
 const get = async (req, res) => {
   try {
     const guests = await prisma.guest.findMany();
-    
+
     return res.status(200).json(guests);
   } catch (err) {
     console.log(err);
-    return res
-      .status(500)
-      .json({ message: "Возникла непредвиденная ошибка на сервере!" });
+    return res.status(500).json({ message: err.message });
   }
 };
 

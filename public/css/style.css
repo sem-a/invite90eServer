@@ -113,7 +113,7 @@ p.text span {
 }
 
 h2.subtitle {
-  font-family: 'Bubble';
+  font-family: "Bubble";
   font-size: 36px;
   text-align: center;
   color: #e8aebc;
@@ -132,7 +132,7 @@ img.dress {
   margin-top: 105px;
 }
 
-form {
+.form-body {
   display: flex;
   align-items: center;
   justify-content: center;

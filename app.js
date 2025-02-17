@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const cors = require("cors");
+const path = require("path");
 
 require("dotenv").config();
 
@@ -9,16 +10,22 @@ const app = express();
 
 app.use(cors());
 
-app.use(express.static('public'));
+// Статические файлы
+app.use(express.static("public"));
+
 // Отправляем файл index.html при запросе к /
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-app.get('/results', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'results.html'));
+
+// Отправляем файл results.html при запросе к /results
+app.get("/results", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "results.html"));
 });
-app.get('/send', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'send.html'));
+
+// Отправляем файл send.html при запросе к /send
+app.get("/send", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "send.html"));
 });
 
 app.use(logger("dev"));

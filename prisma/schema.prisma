@@ -13,5 +13,4 @@ datasource db {
 model Guest {
   id    String  @id @default(uuid())
   name  String
-  count String?
 }
