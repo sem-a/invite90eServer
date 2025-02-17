@@ -17,6 +17,9 @@ app.get('/', (req, res) => {
 app.get('/results', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'results.html'));
 });
+app.get('/send', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'send.html'));
+});
 
 app.use(logger("dev"));
 
